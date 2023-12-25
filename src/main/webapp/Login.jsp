@@ -92,6 +92,7 @@
     <div class="form">
        <form action="Login" method="post" >
            <div class="error-message">${errorMessage}</div>
+           <p>${regi}</p>
            <div class="input-group">
                <label for="email">Email:</label>
                <input type="text" id="email" name="email" required>

@@ -84,7 +84,7 @@
                                     Welcome, ${sessionScope.email} | <a href="Logout">Logout</a>
                                 </c:when>
                                 <c:otherwise>
-                                    <a href="Login.jsp"><i class="fa fa-user"></i> Login</a>
+                                    <a href="Login.jsp"><i class="fa fa-user"></i> Logindf</a>
                                 </c:otherwise>
                             </c:choose>
                         </div>
@@ -107,13 +107,7 @@
                     <ul>
                         <li class="active"><a href="./index.jsp">Home</a></li>
                         <li><a href="./shop-grid.jsp">Shop</a></li>
-                        <li><a href="#">Pages</a>
-                            <ul class="header__menu__dropdown">
-                                <li><a href="#">Shop Details</a></li>
-                                <li><a href="checkout.jsp">Shoping Cart</a></li>
-                                <li><a href="./checkout.jsp">Check Out</a></li>
-                            </ul>
-                        </li>
+
 
 
                     </ul>
