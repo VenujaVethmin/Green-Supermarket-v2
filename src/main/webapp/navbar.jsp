@@ -22,7 +22,7 @@
             <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
             <li><a href="shoping-cart.html"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
         </ul>
-        <div class="header__cart__price">item: <span>$150.00</span></div>
+        <div class="header__cart__price">item: <span id="total-price">$150.00</span></div>
     </div>
     <div class="humberger__menu__widget">
         <div class="header__top__right__language">
@@ -119,7 +119,7 @@
                         <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
                         <li><a href="shoping-cart.html"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
                     </ul>
-                    <div class="header__cart__price">item: <span>$150.00</span></div>
+                    <div class="header__cart__price">item: <span id="total-s"></span></div>
                 </div>
             </div>
         </div>
@@ -129,6 +129,86 @@
     </div>
 </header>
 <!-- Header Section End -->
+
+<script>
+
+    function addToCart(productName, price) {
+        // Get existing cart items from local storage or initialize an empty array
+        let cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+
+        // Check if the item is already in the cart
+        const isItemInCart = cartItems.some(item => item.productName === productName);
+
+        if (isItemInCart) {
+            // Show a message if the item is already in the cart
+            alert(`"${productName}" is already in the cart.`);
+        } else {
+            // Add the new item to the cart
+            const newItem = {
+                productName: productName,
+                price: price,
+            };
+            cartItems.push(newItem);
+
+            // Save the updated cart back to local storage
+            localStorage.setItem("cartItems", JSON.stringify(cartItems));
+
+            // Alert to indicate that the item has been added to the cart (you can customize this part)
+            alert(`"${productName}" has been added to the cart.`);
+
+            // Update the cart display
+            updateCartDisplay();
+        }
+    }
+
+    function removeFromCart(index) {
+        let cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+
+        // Remove the item at the specified index
+        cartItems.splice(index, 1);
+
+        // Save the updated cart back to local storage
+        localStorage.setItem("cartItems", JSON.stringify(cartItems));
+
+        // Update the cart display
+        updateCartDisplay();
+    }
+
+    function updateCartDisplay() {
+        const cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+        const cartItemsContainer = document.getElementById("cart-items");
+        const totalPriceElement = document.getElementById("total-price");
+
+        // Clear the existing content
+        cartItemsContainer.innerHTML = "";
+
+        // Display each item in the cart with a "Remove" button
+        cartItems.forEach((item, index) => {
+            const itemElement = document.createElement("tr");
+            <%--  itemElement.innerHTML = `${item.productName} - $${item.price.toFixed(--%>
+            <%--  2--%>
+            <%--)} <button onclick="removeFromCart(${index})">Remove</button>`;--%>
+            itemElement.innerHTML = `
+
+            `
+            cartItemsContainer.appendChild(itemElement);
+        });
+
+        // Calculate and display the total price
+        const totalPrice = cartItems.reduce(
+            (total, item) => total + item.price,
+            0
+        );
+        totalPriceElement.textContent = totalPrice.toFixed(2);
+    }
+
+    // Initial update when the page loads
+    updateCartDisplay();
+
+
+
+</script>
+
 
 
 </body>
