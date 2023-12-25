@@ -44,9 +44,9 @@
 
 <body>
 
-<c:forEach var="category" items="${categories}">
-    <p>${category.name}</p>
-</c:forEach>
+<%--<c:forEach var="category" items="${categories}">--%>
+<%--    <p>${category.name}</p>--%>
+<%--</c:forEach>--%>
 
 
 
@@ -81,26 +81,10 @@
             </div>
             <div class="col-lg-9">
                 <div class="hero__search">
-                    <div class="hero__search__form">
-                        <form action="#">
-                            <div class="hero__search__categories">
-                                All Categories
-                                <span class="arrow_carrot-down"></span>
-                            </div>
-                            <label>
-                                <input type="text" placeholder="What do yo u need?">
-                            </label>
-                            <button type="submit" class="site-btn">SEARCH</button>
-                        </form>
-                    </div>
+
                     <div class="hero__search__phone">
-                        <div class="hero__search__phone__icon">
-                            <i class="fa fa-phone"></i>
-                        </div>
-                        <div class="hero__search__phone__text">
-                            <h5>+65 11.188.888</h5>
-                            <span>support 24/7 time</span>
-                        </div>
+                        
+
                     </div>
                 </div>
                 <div class="hero__item set-bg" data-setbg="img/hero/banner.jpg">
@@ -123,7 +107,7 @@
         <div class="row">
             <div class="categories__slider owl-carousel">
 
-                    <c:forEach var="category"  items="${c}">
+                    <c:forEach var="category"  items="${categories}">
                         <div class="col-lg-3">
                             <div class="categories__item set-bg" data-setbg="img/categories/cat-1.jpg">
                                 <h5><a href="#">${category.name}</a></h5>

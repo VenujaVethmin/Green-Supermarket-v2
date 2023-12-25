@@ -10,7 +10,7 @@
 <html lang="zxx">
 
 <head>
-    <link rel="stylesheet" href="cart.css" />
+    <link rel="stylesheet" href="css/cart.css" />
     <meta charset="UTF-8">
     <meta name="description" content="Ogani Template">
     <meta name="keywords" content="Ogani, unica, creative, html">
@@ -36,7 +36,6 @@
 </head>
 
 <body>
-
 <%@ include file="navbar.jsp" %>
 <!-- Hero Section Begin -->
 <section class="hero hero-normal">

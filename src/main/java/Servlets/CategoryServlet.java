@@ -3,31 +3,33 @@ package Servlets;
 import Classes.Category;
 import Classes.CategoryDAO;
 
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
+import javax.servlet.ServletContext;
+import javax.servlet.ServletContextEvent;
+import javax.servlet.ServletContextListener;
+import javax.servlet.annotation.WebListener;
 import java.util.List;
 
-public class CategoryServlet extends HttpServlet {
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+@WebListener
+public class CategoryServlet implements ServletContextListener {
+
+    @Override
+    public void contextInitialized(ServletContextEvent sce) {
         try {
-            // Fetch categories from the context attribute
-            List<Category> categories = (List<Category>) getServletContext().getAttribute("categories");
+            // Fetch categories from the database
+            CategoryDAO categoryDAO = new CategoryDAO();
+            List<Category> categories = categoryDAO.getAllCategories();
 
-            // Set the list of categories as a request attribute
-            request.setAttribute("categories", categories);
-
-            // Forward to the JSP page for display
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsp");
-            dispatcher.forward(request, response);
-
+            // Store the category list in the application scope
+            ServletContext servletContext = sce.getServletContext();
+            servletContext.setAttribute("categories", categories);
         } catch (Exception e) {
             e.printStackTrace(); // Log the exception
-            // Forward to an error page
-            request.getRequestDispatcher("/error.jsp").forward(request, response);
+            // Handle the exception as needed
         }
+    }
+
+    @Override
+    public void contextDestroyed(ServletContextEvent sce) {
+        // Cleanup tasks can be performed here if needed
     }
 }
