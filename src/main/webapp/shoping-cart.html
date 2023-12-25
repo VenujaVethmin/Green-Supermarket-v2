@@ -1,13 +1,4 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%--
-  Created by IntelliJ IDEA.
-  User: Venuja
-  Date: 12/24/2023
-  Time: 1:07 PM
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<!DOCTYPE html>
+<!--<!<!DOCTYPE html>-->
 <html lang="zxx">
 
 <head>
@@ -37,7 +28,61 @@
 </head>
 
 <body>
-<%@ include file="navbar.jsp" %>
+
+
+
+
+<!-- Header Section Begin -->
+<header class="header">
+    <div class="header__top">
+        <div class="container">
+            <div class="row">
+
+
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="header__logo">
+                    <a href="./index.jsp"><img src="img/logo.png" alt=""></a>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <nav class="header__menu">
+                    <ul>
+                        <li class="active"><a href="./index.jsp">Home</a></li>
+                        <li><a href="./shop-grid.jsp">Shop</a></li>
+
+
+
+                    </ul>
+                </nav>
+            </div>
+            <div class="col-lg-3">
+                <div class="header__cart">
+                    <ul>
+                        <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
+                        <li><a href="shoping-cart.html"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
+                    </ul>
+                    <div class="header__cart__price">item: <span>$150.00</span></div>
+                </div>
+            </div>
+        </div>
+        <div class="humberger__open">
+            <i class="fa fa-bars"></i>
+        </div>
+    </div>
+</header>
+<!-- Header Section End -->
+
+
+
+
+
+
+
 <!-- Hero Section Begin -->
 <section class="hero hero-normal">
     <div class="container">
@@ -71,7 +116,7 @@
 </section>
 <!-- Breadcrumb Section End -->
 
-<!-- Shoping Cart Section Begin -->--%>
+<!-- Shoping Cart Section Begin -->
 <section class="shoping-cart spad">
     <div class="container">
         <div class="row">
@@ -88,36 +133,36 @@
                         </tr>
                         </thead>
                         <tbody id="cart-items">
-<%--                        Item Start Here--%>
 
-                           <tr>
 
-                                   <td class="shoping__cart__item">
-                                       <img src="img/cart/cart-1.jpg" alt="">
-                                       <h5>Vegetable’s Package</h5>
-                                   </td>
-                                   <td class="shoping__cart__price">
-                                       $55.00
-                                   </td>
-                                   <td class="shoping__cart__quantity">
-                                       <div class="quantity">
-                                           <div class="pro-qty">
-                                               <label>
-                                                   <input type="text" value="1">
-                                               </label>
-                                           </div>
-                                       </div>
-                                   </td>
-                                   <td class="shoping__cart__total">
-                                       $110.00
-                                   </td>
-                                   <td class="shoping__cart__item__close">
-                                       <span class="icon_close"></span>
-                                   </td>
+                        <tr>
 
-                           </tr>
+                            <td class="shoping__cart__item">
+                                <img src="img/cart/cart-1.jpg" alt="">
+                                <h5>Vegetable’s Package</h5>
+                            </td>
+                            <td class="shoping__cart__price">
+                                $55.00
+                            </td>
+                            <td class="shoping__cart__quantity">
+                                <div class="quantity">
+                                    <div class="pro-qty">
+                                        <label>
+                                            <input type="text" value="1">
+                                        </label>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="shoping__cart__total">
+                                $110.00
+                            </td>
+                            <td class="shoping__cart__item__close">
+                                <span class="icon_close"></span>
+                            </td>
 
-<%--                        Item Ends Here--%>
+                        </tr>
+
+
 
                         </tbody>
                     </table>
@@ -141,7 +186,7 @@
                 <div class="shoping__checkout">
                     <h5>Cart Total</h5>
                     <ul>
-<%--                        <li>Subtotal <span>$454.98</span></li>--%>
+                        
                         <li>Total <span id="total-price"></span></li>
                     </ul>
                     <a href="#" class="primary-btn">PROCEED TO CHECKOUT</a>
@@ -206,31 +251,28 @@
         const cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
         const cartItemsContainer = document.getElementById("cart-items");
         const totalPriceElement = document.getElementById("total-price");
+        console.log(cartItems);
 
         // Clear the existing content
         cartItemsContainer.innerHTML = "";
 
-        console.log(cartItems);
-
-
-        <%--// Display each item in the cart with a "Remove" button--%>
-        <%--cartItems.forEach((item, index) => {--%>
-        <%--    const itemElement = document.createElement("tr");--%>
-        <%--    itemElement.innerHTML = `--%>
-        <%--    <td>"${item.productName}"</td>--%>
-        <%--    <td>"$${item.price.toFixed(2)}"</td>--%>
-        <%--    <td><button onclick="removeFromCart(${index})">Remove</button></td>--%>
-        <%--    `;--%>
-        <%--    cartItemsContainer.appendChild(itemElement);--%>
-        <%--});--%>
+        // Display each item in the cart with a "Remove" button
+        cartItems.forEach((item, index) => {
+            const itemElement = document.createElement("tr");
+            itemElement.innerHTML = `
+            <td>${item.productName}</td>
+            <td>$${item.price.toFixed(2)}</td>
+            <td><button onclick="removeFromCart(${index})">Remove</button></td>
+        `;
+            cartItemsContainer.appendChild(itemElement);
+        });
 
         // Calculate and display the total price
-        const totalPrice = cartItems.reduce(
-            (total, item) => total + item.price,
-            0
-        );
+        const totalPrice = cartItems.reduce((total, item) => total + item.price, 0);
         totalPriceElement.textContent = totalPrice.toFixed(2);
     }
+
+
 
     // Initial update when the page loads
     updateCartDisplay();
