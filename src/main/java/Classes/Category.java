@@ -2,17 +2,15 @@ package Classes;
 
 public class Category {
     private int id;
-    private String category;
-    private String image;
+    private String name;
 
     public Category() {
         // Default constructor required for JSP EL
     }
 
-    public Category(int id, String category, String image) {
+    public Category(int id, String name) {
         this.id = id;
-        this.category = category;
-        this.image = image;
+        this.name = name;
     }
 
     // Getters and setters
@@ -25,28 +23,19 @@ public class Category {
         this.id = id;
     }
 
-    public String getCategory() {
-        return category;
+    public String getName() {
+        return name;
     }
 
-    public void setCategory(String category) {
-        this.category = category;
-    }
-
-    public String getImage() {
-        return image;
-    }
-
-    public void setImage(String image) {
-        this.image = image;
+    public void setName(String name) {
+        this.name = name;
     }
 
     @Override
     public String toString() {
-        return "Product{" +
+        return "Category{" +
                 "id=" + id +
-                ", category='" + category + '\'' +
-                ", image='" + image + '\'' +
+                ", name='" + name + '\'' +
                 '}';
     }
 }

@@ -43,13 +43,10 @@
 </head>
 
 <body>
-<!-- Page Preloder -->
-<%--<div id="preloder">--%>
-<%--    <div class="loader"></div>--%>
-<%--</div>--%>
-<%--<c:forEach var="category" items="${c}">--%>
-<%--    <p>${category.names}</p>--%>
-<%--</c:forEach>--%>
+
+<c:forEach var="category" items="${categories}">
+    <p>${category.name}</p>
+</c:forEach>
 
 
 

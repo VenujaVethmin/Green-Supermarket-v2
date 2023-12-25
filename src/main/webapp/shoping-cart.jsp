@@ -10,6 +10,7 @@
 <html lang="zxx">
 
 <head>
+    <link rel="stylesheet" href="cart.css" />
     <meta charset="UTF-8">
     <meta name="description" content="Ogani Template">
     <meta name="keywords" content="Ogani, unica, creative, html">
@@ -20,6 +21,7 @@
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
 
+
     <!-- Css Styles -->
     <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
     <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
@@ -29,6 +31,8 @@
     <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="css/style.css" type="text/css">
+
+    <script src="app.js"></script>
 </head>
 
 <body>
@@ -237,8 +241,30 @@
 <%--</section>--%>
 <!-- Shoping Cart Section End -->
 
+<!-- new Section ---->
+
+<div class="container">
+    <header>
+        <h1>Your Shopping Cart</h1>
+        <div class="shopping">
+            <img src="cart.png"  alt="cart"/>
+            <span class="quantity">0</span>
+        </div>
+    </header>
+    <div class="List"></div>
+</div>
+<div class="card">
+    <h1>Card</h1>
+    <ul class="ListCard"></ul>
+    <div class="checkout">
+        <div class="total">0</div>
+        <div class="closeShopping">Close</div>
+
+    </div>
+</div>
 
 
+<!--- end---->
 
 <!-- Footer Section Begin -->
 <footer class="footer spad">
