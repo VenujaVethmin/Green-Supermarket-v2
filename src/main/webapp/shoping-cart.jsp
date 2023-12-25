@@ -87,11 +87,11 @@
                             <th></th>
                         </tr>
                         </thead>
-                        <tbody id="cartItems">
+                        <tbody id="cart-items">
 <%--                        Item Start Here--%>
-                       <c:forEach var="i" begin="1" end="9">
+
                            <tr>
-                               <div id="cart-items">
+
                                    <td class="shoping__cart__item">
                                        <img src="img/cart/cart-1.jpg" alt="">
                                        <h5>Vegetable’s Package</h5>
@@ -114,9 +114,9 @@
                                    <td class="shoping__cart__item__close">
                                        <span class="icon_close"></span>
                                    </td>
-                               </div>
+
                            </tr>
-                       </c:forEach>
+
 <%--                        Item Ends Here--%>
 
                         </tbody>
@@ -166,7 +166,81 @@
 <script src="js/owl.carousel.min.js"></script>
 <script src="js/main.js"></script>
 
-<script src="js/app.js"></script>
+<%--<script src="js/app.js"></script>--%>
+<script>
+    function addToCart(productName, price) {
+        // Get existing cart items from local storage or initialize an empty array
+        let cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+
+        // Add the new item to the cart
+        const newItem = {
+            productName: productName,
+            price: price,
+        };
+        cartItems.push(newItem);
+
+        // Save the updated cart back to local storage
+        localStorage.setItem("cartItems", JSON.stringify(cartItems));
+
+        // Alert to indicate that the item has been added to the cart (you can customize this part)
+        alert(`"${productName}" has been added to the cart.`);
+
+        // Update the cart display
+        updateCartDisplay();
+    }
+
+    function removeFromCart(index) {
+        let cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+
+        // Remove the item at the specified index
+        cartItems.splice(index, 1);
+
+        // Save the updated cart back to local storage
+        localStorage.setItem("cartItems", JSON.stringify(cartItems));
+
+        // Update the cart display
+        updateCartDisplay();
+    }
+
+    function updateCartDisplay() {
+        const cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+        const cartItemsContainer = document.getElementById("cart-items");
+        const totalPriceElement = document.getElementById("total-price");
+
+        // Clear the existing content
+        cartItemsContainer.innerHTML = "";
+
+        console.log(cartItems);
+
+
+        <%--// Display each item in the cart with a "Remove" button--%>
+        <%--cartItems.forEach((item, index) => {--%>
+        <%--    const itemElement = document.createElement("tr");--%>
+        <%--    itemElement.innerHTML = `--%>
+        <%--    <td>"${item.productName}"</td>--%>
+        <%--    <td>"$${item.price.toFixed(2)}"</td>--%>
+        <%--    <td><button onclick="removeFromCart(${index})">Remove</button></td>--%>
+        <%--    `;--%>
+        <%--    cartItemsContainer.appendChild(itemElement);--%>
+        <%--});--%>
+
+        // Calculate and display the total price
+        const totalPrice = cartItems.reduce(
+            (total, item) => total + item.price,
+            0
+        );
+        totalPriceElement.textContent = totalPrice.toFixed(2);
+    }
+
+    // Initial update when the page loads
+    updateCartDisplay();
+
+    console.log("hutto   .....")
+
+
+
+</script>
+
 </body>
 
 </html>

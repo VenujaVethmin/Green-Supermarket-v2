@@ -261,16 +261,19 @@ function removeFromCart(index) {
 
 function updateCartDisplay() {
     const cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
-    const cartItemsContainer = document.getElementById("cart-items--cc");
+    const cartItemsContainer = document.getElementById("cart-items");
     const totalPriceElement = document.getElementById("total-price");
 
     // Clear the existing content
     cartItemsContainer.innerHTML = "";
 
+
     // Display each item in the cart with a "Remove" button
     cartItems.forEach((item, index) => {
         const itemElement = document.createElement("div");
-        itemElement.innerHTML = ``;
+        itemElement.innerHTML = `${item.productName} - $${item.price.toFixed(
+            2
+        )} <button onclick="removeFromCart(${index})">Remove</button>`;
         cartItemsContainer.appendChild(itemElement);
     });
 
@@ -285,5 +288,4 @@ function updateCartDisplay() {
 // Initial update when the page loads
 updateCartDisplay();
 
-
-
+console.log("hutto   .....")
