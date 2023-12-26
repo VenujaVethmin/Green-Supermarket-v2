@@ -30,11 +30,13 @@ public class LatestProducts {
                     double price = resultSet.getDouble("price");
                     String image = resultSet.getString("image");
                     int quantity = resultSet.getInt("quantity");
+                    String category = resultSet.getString("category");
+
 
                     System.out.println(id);
 
                     // Create a Product object and add it to the list
-                    Product product = new Product(id, name, description, price, image, quantity);
+                    Product product = new Product(id, name, description, price, image, quantity,category);
                     products.add(product);
                 }
             }

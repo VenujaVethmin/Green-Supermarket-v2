@@ -155,7 +155,7 @@
                     <th>Image</th>
                     <th>Quantity</th>
                     <th>Category</th>
-                    <th>Weight</th>
+
                 </tr>
                 </thead>
                 <tbody>
@@ -168,12 +168,12 @@
                         <td>${product.price}</td>
                         <td>${product.image}</td>
                         <td>${product.quantity}</td>
-                        <td>${product.id}</td>
-                        <td>${product.id}</td>
+                        <td>${product.category}</td>
+
                     </tr>
 
                 </c:forEach>
-                
+
 
 
                 </tbody>
