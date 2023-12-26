@@ -7,11 +7,7 @@ public class OrderDetail {
     private float tax;
     private float total;
 
-    public OrderDetail(String productName, String subtotal,
-                       String shipping, String tax, String total) {
-        this.productName = productName;
-
-
+    public OrderDetail( String total) {
 
         this.total = Float.parseFloat(total);
     }
@@ -28,7 +24,9 @@ public class OrderDetail {
         return String.format("%.2f", shipping);
     }
 
-
+    public String getTax() {
+        return String.format("%.2f", tax);
+    }
 
     public String getTotal() {
         return String.format("%.2f", total);

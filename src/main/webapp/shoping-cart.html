@@ -189,10 +189,7 @@
 
                         <li>Total <span id="total-price"></span></li>
                     </ul>
-                    <a href="#" class="primary-btn">PROCEED TO CHECKOUT</a>
-                    <form>
-                        <button></button>
-                    </form>
+                    <a class="primary-btn" onclick="proceedToCheckout()">PROCEED TO CHECKOUT</a>
                 </div>
             </div>
         </div>
@@ -274,6 +271,36 @@
         const totalPrice = cartItems.reduce((total, item) => total + item.price, 0);
         totalPriceElement.textContent = totalPrice.toFixed(2);
     }
+
+    function proceedToCheckout() {
+        const cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+
+        // Check if there is at least one item in the cart
+        if (cartItems.length > 0) {
+            const totalPriceElement = document.getElementById("total-price");
+            const totalPrice = totalPriceElement.textContent; // Get the total price value
+
+            // Create a form dynamically
+            const form = document.createElement("form");
+            form.method = "post";
+            form.action = "authorize_payment"; // Replace with the actual URL of your test1 servlet
+
+            // Add a hidden input field for the total price
+            const inputTotalPrice = document.createElement("input");
+            inputTotalPrice.type = "hidden";
+            inputTotalPrice.name = "totalPrice";
+            inputTotalPrice.value = totalPrice;
+            form.appendChild(inputTotalPrice);
+
+            // Append the form to the body and submit it
+            document.body.appendChild(form);
+            form.submit();
+        } else {
+            // Handle the case where the cart is empty
+            alert("Your cart is empty. Add items before proceeding to checkout.");
+        }
+    }
+
 
 
 

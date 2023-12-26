@@ -84,7 +84,7 @@
                                     Welcome, ${sessionScope.email} | <a href="Logout">Logout</a>
                                 </c:when>
                                 <c:otherwise>
-                                    <a href="Login.jsp"><i class="fa fa-user"></i> Logindf</a>
+                                    <a href="Login.jsp"><i class="fa fa-user"></i> Login</a>
                                 </c:otherwise>
                             </c:choose>
                         </div>
