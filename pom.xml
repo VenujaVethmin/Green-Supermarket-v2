@@ -55,6 +55,18 @@
             <artifactId>postgresql</artifactId>
             <version>42.7.1</version>
         </dependency>
+        <dependency>
+            <groupId>com.paypal.sdk</groupId>
+            <artifactId>rest-api-sdk</artifactId>
+            <version>1.14.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>1.2.3</version> <!-- Use the latest version available -->
+        </dependency>
+
 
         <dependency>
             <groupId>com.google.apis</groupId>
