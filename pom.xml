@@ -74,6 +74,13 @@
             <version>v1-rev20231106-2.0.0</version>
         </dependency>
 
+        <dependency>
+            <groupId>com.resend</groupId>
+            <artifactId>resend-java</artifactId>
+            <version>2.2.1</version>
+        </dependency>
+
+
     </dependencies>
 
     <build>

@@ -42,9 +42,6 @@ public class LatestProducts {
             }
         } catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);
-        } finally {
-            // Close the database connection
-            dbconn.closeConnection();
         }
 
         return products;

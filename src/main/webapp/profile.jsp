@@ -51,7 +51,7 @@
 
         .show-sidebar {
             right: 0;
-            margin-right: 300px;
+            /*margin-right: 300px;*/
         }
 
         .sidebar-content {
@@ -127,6 +127,8 @@
 </head>
 
 <body>
+<p>${errorMessage}</p>
+<p>${messege}</p>
 
 <!-- Page content with Bootstrap grid system -->
 <div class="container-fluid">
@@ -186,16 +188,16 @@
             <div class="sidebar-content">
                 <h2 style="margin-bottom: 20px;">Product Management</h2>
 
-                <form>
-                    <input type="text" class="form-control" id="productId" placeholder="ID">
-                    <input type="text" class="form-control" id="productName" placeholder="Name">
-                    <input type="text" class="form-control" id="productQuantity" placeholder="Quantity">
-                    <input type="text" class="form-control" id="productDescription" placeholder="Description">
-                    <input type="text" class="form-control" id="productPrice" placeholder="Price">
-                    <input type="text" class="form-control" id="productCategory" placeholder="Category">
-                    <input type="text" class="form-control" id="productImage" placeholder="Image">
-                    <input type="text" class="form-control" id="productWeight" placeholder="Weight">
-                    <button class="btn btn-primary" onclick="addProduct()">Add</button>
+                <form action="AddProduct" method="get">
+
+                    <input type="text" class="form-control" id="productName" placeholder="Name" name="name">
+                    <input type="text" class="form-control" id="productQuantity" placeholder="Quantity" name="quantity">
+                    <input type="text" class="form-control" id="productDescription" placeholder="Description" name="description">
+                    <input type="text" class="form-control" id="productPrice" placeholder="Price" name="price">
+                    <input type="text" class="form-control" id="productCategory" placeholder="Category" name="category">
+<%--                    <input type="text" class="form-control" id="productImage" placeholder="Image" name="">--%>
+
+                    <button class="btn btn-primary" type="submit">Add</button>
                     <button class="btn btn-warning" onclick="updateProduct()">Update</button>
                     <button class="btn btn-danger" onclick="deleteProduct()">Delete</button>
                 </form>
