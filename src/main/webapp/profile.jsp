@@ -267,6 +267,7 @@
     function deleteProduct() {
         // Implement logic for deleting a product
         alert("Product deleted!");
+
         toggleSidebar();
     }
 </script>
