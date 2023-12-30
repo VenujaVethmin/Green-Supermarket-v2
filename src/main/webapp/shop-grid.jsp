@@ -94,7 +94,7 @@
 
                 <div class="row" style="max-height: 200vh; overflow-y: scroll;">
 
-                    <c:forEach var="i" begin="1" end="20">
+                    <c:forEach var="product" items="${product}">
 
                         <div class="col-lg-4 col-md-6 col-sm-6">
                             <div class="product__item">
@@ -106,7 +106,7 @@
                                     </ul>
                                 </div>
                                 <div class="product__item__text">
-                                    <h6><a href="#">Crab Pool Security</a></h6>
+                                    <h6><a href="#">${product.name}</a></h6>
                                     <h5>$30.00</h5>
                                 </div>
                             </div>

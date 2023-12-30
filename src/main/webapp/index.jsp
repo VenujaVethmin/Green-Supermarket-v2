@@ -66,7 +66,7 @@
                     </div>
                     <ul>
                         <c:forEach var="category"  items="${categories}">
-                            <li><a href="#">${category.name}</a></li>
+                            <li><a href="products/?cat=${category.name}">${category.name}</a></li>
                         </c:forEach>
                     </ul>
                 </div>
@@ -102,7 +102,7 @@
                     <c:forEach var="category"  items="${categories}">
                         <div class="col-lg-3">
                             <div class="categories__item set-bg" data-setbg="img/categories/cat-1.jpg">
-                                <h5><a href="#">${category.name}</a></h5>
+                                <h5><a href="products/?cat=${category.name}">${category.name}</a></h5>
                             </div>
                         </div>
                     </c:forEach>
