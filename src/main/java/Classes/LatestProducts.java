@@ -38,7 +38,7 @@ public class LatestProducts {
                     products.add(product);
                 }
             }
-        } catch (SQLException | ClassNotFoundException e) {
+        } catch (SQLException e) {
             throw new RuntimeException(e);
         } finally {
             // Close the database connection

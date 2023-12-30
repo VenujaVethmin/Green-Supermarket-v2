@@ -6,25 +6,31 @@ import java.sql.SQLException;
 
 public class Dbconn {
 
-
-    private Connection connection;  // Declare the Connection as a member variable
+    private Connection connection;
 
     public Connection getConnection() {
         return connection;
     }
 
+    public void openConnection() throws SQLException {
+        try {
+            String url = "jdbc:postgresql://db.pujlipkeuabbrkutqlkl.supabase.co:5432/postgres";
+            String username = "your_supabase_username";
+            String password = "your_supabase_password";
 
+            Class.forName("org.postgresql.Driver");
 
-
-    public void openConnection() throws ClassNotFoundException, SQLException {
-        String url = "jdbc:postgresql://db.pujlipkeuabbrkutqlkl.supabase.co:5432/postgres";
-        String username = "postgres";
-        String password = "Venujavethmin";
-        Class.forName("org.postgresql.Driver");
-        System.out.println("Database class logged");
-
-        connection = DriverManager.getConnection(url, username, password);
-        System.out.println("Database connected");
+            connection = DriverManager.getConnection(url, username, password);
+            System.out.println("Database connected");
+        } catch (ClassNotFoundException e) {
+            System.out.println("PostgreSQL JDBC driver not found: " + e.getMessage());
+            // Handle or rethrow the exception based on your application's requirements
+            throw new SQLException("Database connection error", e);
+        } catch (SQLException e) {
+            System.out.println("Error connecting to the database: " + e.getMessage());
+            // Handle or rethrow the exception based on your application's requirements
+            throw e;
+        }
     }
 
     public void closeConnection() {
@@ -37,6 +43,4 @@ public class Dbconn {
             }
         }
     }
-
-
 }

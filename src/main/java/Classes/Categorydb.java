@@ -36,7 +36,12 @@ public class Categorydb {
 
                 }
             }
+<<<<<<< Updated upstream:src/main/java/Classes/Categorydb.java
         } catch (SQLException | ClassNotFoundException e) {
+=======
+
+        } catch (SQLException e) {
+>>>>>>> Stashed changes:src/main/java/Classes/CategoryDAO.java
             throw new RuntimeException(e);
         } finally {
             // Close the database connection
