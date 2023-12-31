@@ -58,37 +58,6 @@
 <!-- Breadcrumb Section End -->
 
 
-<%--<input class="form-control input-number qty-input" type="text" id="quantity-input" name="quantity" value="1">--%>
-<%--<div class="qty-right-plus" data-type="plus" data-field="">--%>
-<%--    <i class="fa-solid fa-plus"></i>--%>
-<%--</div>--%>
-<%--</div>--%>
-<%--</div>--%>
-
-<%--<button onclick="addToCart(this, '${product.name}', '${product.price}', '${product.id}')" class="buy-button buy-button-2 btn btn-cart">--%>
-<%--    <i class="fa-solid fa-cart-shopping"></i>--%>
-<%--</button>--%>
-
-
-
-
-
-
-
-
-
-
-class="fa fa-shopping-cart"
-
-
-
-
-
-
-
-
-
-
 
 
 <!-- Product Section Begin -->
@@ -133,9 +102,7 @@ class="fa fa-shopping-cart"
                                     <ul class="product__item__pic__hover">
                                         <li><a href="#"><i class="fa fa-heart"></i></a></li>
                                         <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                        <li><button onclick="addToCart(this, '${product.name}', '${product.price}', '${product.id}')" class="buy-button buy-button-2 btn btn-cart">
-                                            <i class="fa fa-shopping-cart"></i>
-                                        </button></li>
+                                        <li><button onclick="addToCart()"><i class="fa fa-shopping-cart"></i></button></li>
 
 
 
@@ -157,86 +124,39 @@ class="fa fa-shopping-cart"
     </div>
 </section>
 <!-- Product Section End -->
+
 <script>
-    function addToCart(clickedButton, productName, price, productId) {
-        // Find the associated quantity input
-        let quantityInput = clickedButton.parentNode.querySelector('.qty-input');
-
-        let quantity = parseInt(quantityInput.value);
-
+    function addToCart(productName, price) {
+        console.log("clicked")
         // Get existing cart items from local storage or initialize an empty array
         let cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
 
         // Check if the item is already in the cart
-        const existingItem = cartItems.find(item => item.productName === productName);
+        const isItemInCart = cartItems.some(item => item.productName === productName);
 
-        if (existingItem) {
-            // Update the quantity of the existing item
-            existingItem.quantity += quantity;
+        if (isItemInCart) {
+            // Show a message if the item is already in the cart
+            alert(`is already in the cart.`);
         } else {
             // Add the new item to the cart
             const newItem = {
                 productName: productName,
                 price: price,
-                quantity: quantity
             };
             cartItems.push(newItem);
+
+            // Save the updated cart back to local storage
+            localStorage.setItem("cartItems", JSON.stringify(cartItems));
+
+            // Alert to indicate that the item has been added to the cart (you can customize this part)
+            alert(` has been added to the cart.`);
+
+            // Update the cart display
+            updateCartDisplay();
         }
-
-        // Save the updated cart back to local storage
-        localStorage.setItem("cartItems", JSON.stringify(cartItems));
-
-        // Reset the quantity input field to 1
-        quantityInput.value = 1;
     }
-
-    function removeFromCart(index) {
-        let cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
-
-        // Remove the item at the specified index
-        cartItems.splice(index, 1);
-
-        // Save the updated cart back to local storage
-        localStorage.setItem("cartItems", JSON.stringify(cartItems));
-
-        // Update the cart display
-        updateCartDisplay();
-    }
-
-    function updateCartDisplay() {
-        const cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
-        const cartItemsContainer = document.getElementById("cart-items");
-        const totalPriceElement = document.getElementById("total-price");
-        const quantityContainer = document.getElementById("quantity");
-
-        // Clear the existing content
-        cartItemsContainer.innerHTML = "";
-
-        // Display each item in the cart with a "Remove" button
-        cartItems.forEach((item, index) => {
-            const itemElement = document.createElement("tr");
-
-            itemElement.innerHTML = `
-
-            `
-            cartItemsContainer.appendChild(itemElement);
-        });
-
-        // Calculate and display the total price
-        const totalPrice = cartItems.reduce(
-            (total, item) => total + item.price,
-            0
-        );
-        totalPriceElement.textContent = totalPrice.toFixed(2);
-    }
-
-    // Initial update when the page loads
-    updateCartDisplay();
-
-
 
 </script>
-
 
 <!-- Js Plugins -->
 <script src="js/Sendemail.js"></script>

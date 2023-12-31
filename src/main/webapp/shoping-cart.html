@@ -271,26 +271,7 @@
 
 <script src="js/app.js"></script>
 <script>
-    function addToCart(productName, price) {
-        // Get existing cart items from local storage or initialize an empty array
-        let cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
 
-        // Add the new item to the cart
-        const newItem = {
-            productName: productName,
-            price: price,
-        };
-        cartItems.push(newItem);
-
-        // Save the updated cart back to local storage
-        localStorage.setItem("cartItems", JSON.stringify(cartItems));
-
-        // Alert to indicate that the item has been added to the cart (you can customize this part)
-        alert(`"${productName}" has been added to the cart.`);
-
-        // Update the cart display
-        updateCartDisplay();
-    }
 
     function removeFromCart(index) {
         let cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];

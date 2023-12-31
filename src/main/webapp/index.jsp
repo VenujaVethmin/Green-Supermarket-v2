@@ -207,30 +207,23 @@
         // Get existing cart items from local storage or initialize an empty array
         let cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
 
-        // Check if the item is already in the cart
-        const isItemInCart = cartItems.some(item => item.productName === productName);
+        // Add the new item to the cart
+        const newItem = {
+            productName: productName,
+            price: price,
+        };
+        cartItems.push(newItem);
 
-        if (isItemInCart) {
-            // Show a message if the item is already in the cart
-            alert(`"${productName}" is already in the cart.`);
-        } else {
-            // Add the new item to the cart
-            const newItem = {
-                productName: productName,
-                price: price,
-            };
-            cartItems.push(newItem);
+        // Save the updated cart back to local storage
+        localStorage.setItem("cartItems", JSON.stringify(cartItems));
 
-            // Save the updated cart back to local storage
-            localStorage.setItem("cartItems", JSON.stringify(cartItems));
+        // Alert to indicate that the item has been added to the cart (you can customize this part)
+        alert(`"${productName}" has been added to the cart.`);
 
-            // Alert to indicate that the item has been added to the cart (you can customize this part)
-            alert(`"${productName}" has been added to the cart.`);
-
-            // Update the cart display
-            updateCartDisplay();
-        }
+        // Update the cart display
+        updateCartDisplay();
     }
+
 
     function removeFromCart(index) {
         let cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
