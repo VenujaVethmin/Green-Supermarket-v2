@@ -111,7 +111,7 @@
                                 </div>
                                 <div class="product__item__text">
                                     <h6><a href="#">${category.name}</a></h6>
-                                    <h5>$30.00</h5>
+                                    <h5>${category.price}</h5>
                                 </div>
                             </div>
                         </div>
