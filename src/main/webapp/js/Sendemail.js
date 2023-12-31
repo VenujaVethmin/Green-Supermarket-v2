@@ -1,36 +1,46 @@
 import { Resend } from 'resend';
 
-function sendConfirmationEmail(customerEmail) {
-    // Import the Resend library
-    // Create a new Resend instance
-    console.log('Sending confirmation email to ' + customerEmail);
+export const sendPaymentConfirmationEmail = async (recipientEmail) => {
     const resend = new Resend('re_KvVH5HDU_An3u7Sn8MtWCChSxnuFKBju5');
 
-    // Get cart items
-    const cartItems = document.getElementById('cart-items').innerHTML;
+    const emailContent = `
+        <p>Thank you for your purchase! Your transaction is complete. Total Value: <h5 id="total-price"> </h5></p>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                </tr>
+            </thead>
+            <tbody>
+                ${cartItems}
+            </tbody>
+        </table>
+    `;
 
-    // Send the confirmation email with invoice content
-    resend.emails.send({
+    const emailOptions = {
         from: 'onboarding@resend.dev',
-        to: "gsahindu@gmail.com",
-        subject: 'Invoice for Your Purchase',
-        html: `
-            <p>Thank you for your purchase! Your transaction is complete. Total Value: <h5 id="total-price"> </h5></p>
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Price</th>
-                        <th>Quantity</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    ${cartItems}
-                </tbody>
-            </table>
-        `
-    })
-}
+        to: recipientEmail,
+        subject: 'Payment Complete',
+        html: emailContent
+    };
+
+    try {
+        const { data, error } = await resend.emails.send(emailOptions);
+        // Handle response or errors if needed
+    } catch (error) {
+        // Handle errors during the email sending process
+        console.error('Error sending email:', error);
+    }
+};
+
+// Example usage:
+export default sendPaymentConfirmationEmail;
+// const recipientEmail = 'gsahindu@gmail.com';
+// const exampleCartItems = '<tr><td>Product1</td><td>$20.00</td><td>2</td></tr>';
+// sendPaymentConfirmationEmail(recipientEmail);
+window.sendPaymentConfirmationEmail = sendPaymentConfirmationEmail;
 
 window.onload = function () {
     const cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];

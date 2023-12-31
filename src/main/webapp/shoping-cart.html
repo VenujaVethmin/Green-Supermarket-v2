@@ -32,6 +32,7 @@
 
 
 
+
 <!-- Header Section Begin -->
 <header class="header">
     <div class="header__top">
@@ -193,7 +194,10 @@
 
                         <button onclick="paypalCheckout()"
                                 class="primary-btn">Process To Checkout</button>
+
+
                         <script>
+
 
                             function paypalCheckout() {
                                 paypal.Buttons({
@@ -212,20 +216,13 @@
                                         return actions.order.capture().then(function (details) {
                                             // Handle the successful payment (e.g., update order status)
                                             alert('Transaction completed by ' + details.payer.name.given_name);
+                                            // cartItemsContainer.innerHTML = "";
                                             // sendConfirmationEmail(customerEmail);
-                                            // sendmail("vpulindu49@gmail.com")
                                             window.location.href = 'success.jsp';
-
                                         });
                                     }
                                 }).render('#paypal-button-container');
                             }
-
-
-
-                            // Run the function
-                            // --------------- Don't fucking touch this code ----------------
-
                         </script>
                     </div>
                 </div>
@@ -236,7 +233,11 @@
 <!-- Shoping Cart Section End -->
 
 
+<!--<script type="module">-->
+<!--    import { sendPaymentConfirmationEmail } from 'js/sendemail.js';-->
 
+<!--    // Now you can use sendPaymentConfirmationEmail function-->
+<!--</script>-->
 
 
 <!-- Js Plugins -->
