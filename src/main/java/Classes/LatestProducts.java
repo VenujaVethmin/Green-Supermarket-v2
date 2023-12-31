@@ -32,12 +32,52 @@ public class LatestProducts {
                     int quantity = resultSet.getInt("quantity");
                     String category = resultSet.getString("category");
 
-
                     System.out.println(name + " loaded as a product");
 
                     // Create a Product object and add it to the list
-                    Product product = new Product(id, name, description, price, image, quantity,category);
+                    Product product = new Product(id, name, description, price, image, quantity, category);
                     products.add(product);
+                }
+            }
+        } catch (SQLException | ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        } finally {
+            // Close the database connection
+            dbconn.closeConnection();
+        }
+
+        return products;
+    }
+
+    // Add this method to handle category-based queries
+    public List<Product> getProductsByCategory(String category) {
+        Dbconn dbconn = new Dbconn();
+        List<Product> products = new ArrayList<>();
+
+        try {
+            dbconn.openConnection();
+
+            // Execute a query with category filter
+            String sqlQuery = "SELECT * FROM products WHERE category = ?";
+            try (PreparedStatement preparedStatement = dbconn.getConnection().prepareStatement(sqlQuery)) {
+                preparedStatement.setString(1, category);
+
+                try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                    // Process the results
+                    while (resultSet.next()) {
+                        int id = resultSet.getInt("id");
+                        String name = resultSet.getString("name");
+                        String description = resultSet.getString("description");
+                        double price = resultSet.getDouble("price");
+                        String image = resultSet.getString("image");
+                        int quantity = resultSet.getInt("quantity");
+
+                        System.out.println(name + " loaded as a product");
+
+                        // Create a Product object and add it to the list
+                        Product product = new Product(id, name, description, price, image, quantity, category);
+                        products.add(product);
+                    }
                 }
             }
         } catch (SQLException | ClassNotFoundException e) {

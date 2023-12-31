@@ -41,7 +41,7 @@ public class RegisterServlet extends HttpServlet {
         CustomerRegister customerDao = new CustomerRegister();
         try {
             customerDao.insertUser(username, email, password);
-            request.setAttribute("regi","ow ow pakaya register una hariyata,dn pakaya vage log viyan weesaawa" );
+            request.setAttribute("regi","User registered Successfully" );
             request.getRequestDispatcher("Login.jsp").forward(request, response);
         } catch (SQLException | ClassNotFoundException e) {
             request.setAttribute("errorMessage", e.getMessage());

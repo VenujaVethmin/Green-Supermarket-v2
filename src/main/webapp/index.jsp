@@ -26,7 +26,7 @@
     <meta name="keywords" content="Ogani, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Ogani | Template</title>
+    <title>Home</title>
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300&display=swap" rel="stylesheet">
@@ -66,7 +66,7 @@
                     </div>
                     <ul>
                         <c:forEach var="category"  items="${categories}">
-                            <li><a href="#">${category.name}</a></li>
+                            <li><a href="/shop?category=${category.name}">${category.name}</a></li>
                         </c:forEach>
                     </ul>
                 </div>
@@ -102,7 +102,7 @@
                     <c:forEach var="category"  items="${categories}">
                         <div class="col-lg-3">
                             <div class="categories__item set-bg" data-setbg="img/categories/cat-1.jpg">
-                                <h5><a href="#">${category.name}</a></h5>
+                                <h5><a href="/shop?category?=${category.name}">${category.name}</a></h5>
                             </div>
                         </div>
                     </c:forEach>
