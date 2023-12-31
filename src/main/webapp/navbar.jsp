@@ -107,6 +107,7 @@
                     <ul>
                         <li class="active"><a href="./index.jsp">Home</a></li>
                         <li><a href="./shop-grid.jsp">Shop</a></li>
+                        <li><a href="./profile.jsp">Admin</a></li>
 
 
 

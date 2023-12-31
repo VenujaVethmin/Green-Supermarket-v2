@@ -194,7 +194,7 @@
                         <button onclick="paypalCheckout()"
                                 class="primary-btn">Process To Checkout</button>
                         <script>
-                            import { Resend } from 'resend';
+
                             function paypalCheckout() {
                                 paypal.Buttons({
                                     createOrder: function (data, actions) {
@@ -213,7 +213,7 @@
                                             // Handle the successful payment (e.g., update order status)
                                             alert('Transaction completed by ' + details.payer.name.given_name);
                                             // sendConfirmationEmail(customerEmail);
-                                            sendmail("vpulindu49@gmail.com")
+                                            // sendmail("vpulindu49@gmail.com")
                                             window.location.href = 'success.jsp';
 
                                         });
@@ -225,27 +225,7 @@
 
                             // Run the function
                             // --------------- Don't fucking touch this code ----------------
-                            const sendmail = (mail) => {
 
-                                const resend = new Resend('APIKEY');
-
-                                (async function() {
-                                    const { data, error } = await resend.emails.send({
-                                        from: 'onboarding@resend.dev',
-                                        to: mail,
-                                        subject: 'Payment Complete',
-                                        html: `huttooooo`
-
-                                    });
-
-                                    if (error) {
-                                        return console.log(error);
-                                    }
-
-                                    console.log(data);
-                                })();
-
-                            }
                         </script>
                     </div>
                 </div>
@@ -271,7 +251,26 @@
 
 <script src="js/app.js"></script>
 <script>
+    function addToCart(productName, price) {
+        // Get existing cart items from local storage or initialize an empty array
+        let cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
 
+        // Add the new item to the cart
+        const newItem = {
+            productName: productName,
+            price: price,
+        };
+        cartItems.push(newItem);
+
+        // Save the updated cart back to local storage
+        localStorage.setItem("cartItems", JSON.stringify(cartItems));
+
+        // Alert to indicate that the item has been added to the cart (you can customize this part)
+        alert(`"${productName}" has been added to the cart.`);
+
+        // Update the cart display
+        updateCartDisplay();
+    }
 
     function removeFromCart(index) {
         let cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
