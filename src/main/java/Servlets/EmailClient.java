@@ -23,8 +23,8 @@ public class EmailClient extends HttpServlet {
         SendEmailRequest sendEmailRequest = SendEmailRequest.builder()
                 .from("onboarding@resend.dev")
                 .to("venujavethmin1234@gmail.com")
-                .subject("Pake Java")
-                .html("<p>Randika Gobbaya Randikage Gaani Gobbaya<strong>first email</strong>!</p>")
+                .subject("Java")
+                .html("<p>test<strong>first email</strong>!</p>")
                 .build();
         System.out.println("email sent");
 
