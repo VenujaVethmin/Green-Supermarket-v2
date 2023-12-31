@@ -15,7 +15,7 @@
 <div class="humberger__menu__overlay"></div>
 <div class="humberger__menu__wrapper">
     <div class="humberger__menu__logo">
-        <a href="#"><img src="img/logo.png" alt=""></a>
+        <a href="#"><h4 class="m-2">Green Supermarket</h4></a>
     </div>
     <div class="humberger__menu__cart">
         <ul>
@@ -99,7 +99,7 @@
         <div class="row">
             <div class="col-lg-3">
                 <div class="header__logo">
-                    <a href="./index.jsp"><img src="img/logo.png" alt=""></a>
+                    <a href="./index.jsp"><h4>Green Supermarket</h4></a>
                 </div>
             </div>
             <div class="col-lg-6">
