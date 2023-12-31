@@ -52,7 +52,16 @@
     </nav>
     <div id="mobile-menu-wrap"></div>
 
+<<<<<<< Updated upstream
     
+=======
+    <div class="humberger__menu__contact">
+        <ul>
+<%--            <li><i class="fa fa-envelope"></i> hello@colorlib.com</li>--%>
+
+        </ul>
+    </div>
+>>>>>>> Stashed changes
 </div>
 <!-- Humberger End -->
 
@@ -62,12 +71,11 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-6 col-md-6">
-                    <div class="header__top__left">
-                        <ul>
-                            <li><i class="fa fa-envelope"></i> hello@colorlib.com</li>
+                    <div class="heade"><ul>
+                            <li><i class="fa fa-envelope"></i> hello@colorlib.co</li>
 
                         </ul>
-                    </div>
+r                    </div>
                 </div>
                 <div class="col-lg-6 col-md-6">
                     <div class="header__top__right">
@@ -120,7 +128,11 @@
                         <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
                         <li><a href="shoping-cart.jsp"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
                     </ul>
+<<<<<<< Updated upstream
                     <div class="header__cart__price">item: <span>$150.00</span></div>
+=======
+<div class="header__cart__price">item: <span class="total-price"></span></div>
+>>>>>>> Stashed changes
                 </div>
             </div>
         </div>
