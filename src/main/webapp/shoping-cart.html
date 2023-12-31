@@ -189,7 +189,41 @@
 
                         <li>Total <span id="total-price"></span></li>
                     </ul>
-                    <a class="primary-btn" onclick="proceedToCheckout()">PROCEED TO CHECKOUT</a>
+                    <div id="paypal-button-container">
+                   
+                        <button onclick="paypalCheckout()"
+                                class="primary-btn">Process To Checkout</button>
+                        <script>
+                            function paypalCheckout() {
+                                paypal.Buttons({
+                                    createOrder: function (data, actions) {
+                                        // Set up the transaction details
+                                        return actions.order.create({
+                                            purchase_units: [{
+                                                amount: {
+                                                    value: document.getElementById('total-price').innerText // Replace with the total amount from your shopping cart
+                                                }
+                                            }]
+                                        });
+                                    },
+                                    onApprove: function (data, actions) {
+                                        // Capture the funds when the user approves the transaction
+                                        return actions.order.capture().then(function (details) {
+                                            // Handle the successful payment (e.g., update order status)
+                                            alert('Transaction completed by ' + details.payer.name.given_name);
+                                            sendConfirmationEmail(customerEmail);
+                                            window.location.href = 'success.jsp';
+
+                                        });
+                                    }
+                                }).render('#paypal-button-container');
+                            }
+
+
+
+                            // Run the function
+                        </script>
+                    </div>
                 </div>
             </div>
         </div>
@@ -312,7 +346,7 @@
 
 
 </script>
-
+<script src="https://www.paypal.com/sdk/js?client-id=AU2KFUHaNqHFswGmTCyodKc9qj8Sa_7eUUyfb4Q0oYNxsa---8KIFkF6hBUah1YFQqxMcivm6f78yo_b"></script>
 </body>
 
 </html>

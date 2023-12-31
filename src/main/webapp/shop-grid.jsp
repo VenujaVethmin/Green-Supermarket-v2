@@ -70,7 +70,7 @@
                         <h4>Department</h4>
                         <ul>
                             <c:forEach var="category"  items="${categories}">
-                                <li><a href="#">${category.name}</a></li>
+                                <li><a href="/shop?category=${category.name}">${category.name}</a></li>
                             </c:forEach>
 
                         </ul>
@@ -124,6 +124,7 @@
 
 
 <!-- Js Plugins -->
+<script src="js/Sendemail.js"></script>
 <script src="js/jquery-3.3.1.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/jquery.nice-select.min.js"></script>
