@@ -52,12 +52,7 @@
     </nav>
     <div id="mobile-menu-wrap"></div>
 
-    <div class="humberger__menu__contact">
-        <ul>
-            <li><i class="fa fa-envelope"></i> hello@colorlib.com</li>
-
-        </ul>
-    </div>
+    
 </div>
 <!-- Humberger End -->
 
@@ -99,7 +94,7 @@
         <div class="row">
             <div class="col-lg-3">
                 <div class="header__logo">
-                    <a href="./index.jsp"><img src="img/logo.png" alt=""></a>
+                    <a href="./index.jsp"><img src="img/language.png" alt=""></a>
                 </div>
             </div>
             <div class="col-lg-6">
